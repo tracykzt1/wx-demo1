@@ -1,0 +1,46 @@
+<!-- tip:<swiper>设置宽高才有效，<swiper-item>设置宽高无效，<swiper-item>会继承<swiper>的宽高； -->
+
+<!-- tip:<swiper>内加上vertical="true"，轮播变成纵向滚动；当要恢复为横向轮播时，必须这样vertical="{{false}}"才有效。写成vertical="false"是无效的，还是纵向滚动；原因：vertical="false"，小程序会认为"false"一个字符串，将其转化为true，从而vertical=true； <swiper>中其它依据布尔值相关的属性也是同样原理！ -->
+
+<!-- tip: 设置样式的时候，margin-left，margin-right一般用rpx，margin-top、margin-bottom一般用px。原因：随着手机宽度不同自适应调整横向间距；纵向上手机是可以无限滑动的，纵向间距上可以用px固定。（经验总结） -->
+
+<!-- tip:小程序中显示隐藏某一个元素用wx:if=""表示。等于号右边结果若为真则显示，否则隐藏； -->
+
+<!-- tip:小程序中循环用<block wx:for="{{数组或对象}}">。哪一部分需要循环就将该部分用<block>包裹。默认用item表示数组中每一项，index表示数组每一项的索引值-->
+
+<!-- 按住Alt+Shift+F可以快速格式化代码； -->
+<import src="posts-item/posts-item-template.wxml"/>  <!--这里记得加上斜杠/-->
+<view class='wrapper'>
+  <swiper catchtap="onSwiperTap" vertical="{{false}}" indicator-dots="true" indicator-color="rgba(255,255,255,0.3)" indicator-active-color="#f80" autoplay="true" interval="5000" duration="500" circular="true">
+    <swiper-item>
+      <image  src='/images/xiaolong.jpg' data-postid="3"></image>
+    </swiper-item>
+    <swiper-item>
+      <image  src='/images/vr.png' data-postid="4"></image>
+    </swiper-item>
+    <swiper-item>
+      <image  src='/images/iqiyi.png' data-postid="5"></image>
+    </swiper-item>
+  </swiper>
+  <block wx:for="{{postsList}}" wx:key="key">
+    <!-- <view class='post-container'>
+      <view class='post-author-date'>
+        <image wx:if="{{true}}" src='{{item.avatar}}' class='post-author'></image>
+        <text class='post-date'>{{item.date}}-{{index}}</text>
+      </view>
+      <text class='post-title'>{{item.title}}</text>
+      <image src='{{item.imgSrc}}' class='post-image'></image>
+      <text class='post-content'>{{item.content}}</text>
+      <view class='post-like'>
+        <image src='../../images/icon/chat.png' class='post-like-image'></image>
+        <text class='post-like-font'>{{item.collection}}</text>
+        <image src='../../images/icon/view.png' class='post-like-image'></image>
+        <text class='post-like-font'>{{item.reading}}</text>
+      </view>
+    </view> -->
+    <view catchtap='onPostsTap' data-postid='{{item.postId}}'>
+      <template is="postsItem" data="{{item,index}}"/>  <!--这里记得加上斜杠/-->
+    </view>
+    <!-- 这种写法也可以 <template is="postsItem" data="{{...item,index}}"/>，然后posts-item-template.wxml中就可以去掉 “item.” -->
+  </block>
+</view>

@@ -1,0 +1,3 @@
+<import src="../movies-group/movies-group-template.wxml" />
+
+<template is="moviesGroupTemplate" data="{{movies}}"/>

@@ -1,0 +1,14 @@
+<!-- wxml是编写小程序骨架的文件 -->
+<!-- <view>类似于<div> -->
+<!-- <image>用来表示图片 -->
+<!-- <text>用来表示文本 -->
+<!-- tip：文本可以不用<text>包括也可以正常显示，但只有用<text>包括起来的文本才可以在手机中长按选中 -->
+<!-- rpx单位是小程序中自适应单位；iphone6设计稿中多少像素，代码中就写多少像素，然后加上rpx单位即可；rpx会根据当前设备的dpr和所写的像素  -->
+
+<view class='container'>
+  <image src='/images/face.jpg' class='face'></image>
+  <text class='title'><text style='color:white;'>Hello</text> Tracy</text>
+  <view class='start-container' bindtap='onTap'>
+    <text class='start'>点击开启</text>
+  </view>
+</view>

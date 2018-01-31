@@ -1,0 +1,18 @@
+<import src="movie-list/movie-list-template.wxml" />
+<import src="movies-group/movies-group-template.wxml" />
+
+
+<view class='search'>
+  <icon type='search' size='13' color='#405f80' class='search-img'></icon>
+  <input type='text' placeholder='你的名字' placeholder-class='placeholder' bindfocus='onfocus' bindconfirm = "onConfirm"></input>
+  <image src='/images/icon/xx.png' class='cancel-img' catchtap='onCancelTap' wx:if="{{showSearchPanel}}"></image>
+</view>
+<view class='f_container' wx:if="{{showMoviesPanel}}">
+  <template is="movieListTemplate" data="{{...playing}}"/>
+  <template is="movieListTemplate" data="{{...comesoon}}"/>
+  <template is="movieListTemplate" data="{{...top250}}"/>
+</view>
+
+<view class='search-panel' wx:if="{{showSearchPanel}}">
+  <template is="moviesGroupTemplate" data="{{...searchResult}}"/>
+</view>

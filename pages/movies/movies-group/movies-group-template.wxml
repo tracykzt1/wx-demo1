@@ -1,0 +1,11 @@
+<import src="../movie/movie-template.wxml" />
+
+<template name="moviesGroupTemplate">
+  <view class='groupContainer'>
+    <block wx:for="{{movies}}" wx:key="key">
+      <view class='single-item'>
+        <template is="moviesTemplate" data="{{...item}}" />
+      </view>
+    </block>
+  </view>
+</template>
